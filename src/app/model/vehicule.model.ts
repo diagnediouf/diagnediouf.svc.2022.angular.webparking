@@ -1,0 +1,45 @@
+import { TypeVehicule } from "./typeVehicule.model";
+
+export class Vehicule{
+  matricule:string;
+  marque:string;
+  carburant:string;
+  kilometrage:string;
+  couleur:string;
+  nbrePlace:number;
+  currentprice:number;
+  prixParJour:number;
+  promotion:boolean;
+  selected:boolean;
+  disponibilite:boolean;
+  description:string;
+  quantity:number;
+  typeVehicule:TypeVehicule;
+  photoVeh:string;
+  _links:{
+      self:{
+          href:string
+      },
+      vehicule:{
+          href:string
+      },
+      reservationLocation:{
+          href:string
+      },
+      typeVehicule:{
+          href:string
+    },
+    reservationVente:{
+        href:string
+    },
+    paiementVente:{
+        href:string
+    },
+    reglement:{
+        href:string
+    },
+    paiementLocation:{
+        href:string
+    }
+  }
+}

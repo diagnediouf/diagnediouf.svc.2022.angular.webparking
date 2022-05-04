@@ -1,0 +1,91 @@
+<div *ngIf="currentVehicule">
+    <div class="panel panel-default" *ngIf="mode==0">
+        <div class="panel-heading">Fiche Vehicule : {{currentVehicule.marque}}
+            <span class="glyphicon glyphicon-edit pull-rigth btn" (click)="onEditVehicule()"></span>
+        </div>
+        <div class="panel-body">
+            <div class="col-md-5">
+                <img class="img-thumnail img-rounded btn" [src]="this.catService.host+'/photoVehicule/'+currentVehicule.matricule+'?ts='+getTS()"/>
+                <div *ngIf="this.authService.isAdmin()">
+                    <button *ngIf="!editPhoto" (click)="onEditPhoto(currentVehicule)">
+                        <span class="glyphicon glyphicon-edit"></span>
+                    </button>
+                    <span *ngIf="editPhoto">
+                        <input type="file" (change)="onSelectedFile($event)">
+                        <button class="btn btn-success btn-sm" (click)="uploadPhoto()">
+                            <span class="glyphicon glyphicon-upload"></span>
+                        </button>
+                        {{progress}}
+                    </span>
+                    <div>
+
+                    </div>
+                    <span *ngIf="currentVehicule.promotion">
+                        <img src="assets/image/promo.png" class="img-thumnail img-circle" height="30px" width="30px">
+                      </span>
+                      <span *ngIf="currentVehicule.selected">
+                        <img src="assets/image/favorite.png" class="img-thumnail img-circle" height="30px" width="30px">
+                      </span>
+                      <span *ngIf="currentVehicule.disponibilite">
+                        <img src="assets/image/disponibilite.jpg" class="img-thumnail img-circle" height="30px" width="30px">
+                      </span>
+                </div>
+                <div>
+                    <form #f="ngForm" (ngSubmit)="onAddVehiculeToHangar(currentVehicule)">
+                        <label class="control-label">Quantite :</label>
+                        <input type="number" name="quantity" style="width: 40px;" [(ngModel)]="currentVehicule.quantity">
+                        <button>
+                          <img src="assets/image/Garage.png" height="30px" width="30px">
+                        </button>
+                      </form>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="panel panel-default">
+                    <div class="panel-body" *ngIf="currentVehicule.currentprice">
+                        <label>Prix : {{currentVehicule.currentprice|number:'0.00'}}</label>
+                    </div>
+                    <div class="panel-body" *ngIf="currentVehicule.prixParJour">
+                        <label>Prix/Jour : {{currentVehicule.prixParJour|number:'0.00'}}</label>
+                    </div>
+                    <div class="panel-body">
+                        Description : {{currentVehicule.description}}                              
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="mode==1">
+        <form #f="ngForm" (ngSubmit)="onUpdateVehicule(f.value)">
+            <div class="form-group">
+                <label class="control-label">Marque:</label>
+                <input type="text" name="marque" ngModel [(ngModel)]="currentVehicule.marque" class="form-control">
+            </div>
+            <div class="form-group">
+                <label class="control-label">Description:</label>
+                <input type="text" name="description" ngModel [(ngModel)]="currentVehicule.description" class="form-control">
+            </div>
+            <div *ngIf="currentVehicule.currentprice" class="form-group">
+                <label class="control-label">Prix:</label>
+                <input type="text" name="currentprice" ngModel [(ngModel)]="currentVehicule.currentprice" class="form-control">
+            </div>
+            <div *ngIf="currentVehicule.prixParJour" class="form-group">
+                <label class="control-label">Prix/Jour:</label>
+                <input type="text" name="prixParJour" ngModel [(ngModel)]="currentVehicule.prixParJour" class="form-control">
+            </div>
+            <div class="form-group">
+                <label class="control-label">Promotion:</label>
+                <input type="checkbox" name="promotion" ngModel [(ngModel)]="currentVehicule.promotion" class="form-control">
+            </div>
+            <div class="form-group">
+                <label class="control-label">Selection:</label>
+                <input type="checkbox" name="selected" ngModel [(ngModel)]="currentVehicule.selected" class="form-control">
+            </div>
+            <div class="form-group">
+                <label class="control-label">Disponibilité:</label>
+                <input type="checkbox" name="disponibilite" ngModel [(ngModel)]="currentVehicule.disponibilite" class="form-control">
+            </div>
+            <button class="btn btn-sucess" type="submit">Update</button>
+        </form>
+    </div>
+</div>

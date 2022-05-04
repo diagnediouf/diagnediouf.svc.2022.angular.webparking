@@ -1,0 +1,76 @@
+<div class="container">
+  <div class="col-md-3">
+    <ul class="list-group" *ngIf="typeVehicules">
+      <button class="btn btn-success" (click)="onSelectedVehicule()">SELECTION PAR DEFAUT</button>
+      <li [ngClass]="currentTypeVehicule==typeV?'active':''"(click)="getVehiculeByType(typeV)" 
+                          class="list-group-item clickable" 
+                          *ngFor="let typeV of typeVehicules._embedded.typeVehicules">
+             {{typeV.libelleTypeVeh}}
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-9">
+
+  </div>
+  <div *ngIf="vehicule">
+    <div><h3>{{title}}</h3></div>
+    <button class="btn btn-success" (click)="onVehiculesPromo()">PROMOTION</button>
+    <button class="btn btn-success" (click)="onVehiculesDispo()">Disponibilites</button>
+    <div *ngFor="let veh of vehicule._embedded.vehicules">
+        <div class="col-md-4">
+        <div class="panel panel-default heigthed">
+            <div class="panel-heading">{{veh.marque}}</div>
+            <div class="panel-body" class="col-md-10">
+              <img class="img-thumnail img-rounded btn" (click)="onVehiculeDetails(veh)" src="{{this.catService.host+'/photoVehicule/'+veh.matricule+'?ts='+getTS()}}"/>
+                 <div *ngIf="isAdmin()">
+                   <p><button (click)="onEditPhoto(veh)">
+                       <span class="glyphicon glyphicon-edit"></span>
+                     </button></p>
+                   <p *ngIf="editPhoto==true && currentVehicule==veh">
+                     <input type="file" (change)="onSelectedFile($event)">
+                     <button class="btn btn-success" (click)="uploadPhoto()">Upload</button>
+                     {{progress}}
+                   </p>
+                 </div>
+                    <div>
+                      <label >DESCRIPTION : {{veh.description}}</label>
+                    </div>
+                    <div>
+                      <label >Kilometrage : {{veh.kilometrage}}</label>
+                    </div>
+                    <div *ngIf="veh.prixParJour">
+                      <label>Prix/Jour : {{veh.prixParJour | number:'0.2'}}FCFA</label>
+                    </div>
+                    <div *ngIf="veh.currentprice">
+                      <label>Montant : {{veh.currentprice | number:'0.2'}}FCFA</label>
+                    </div>
+                    <div>
+                      <span *ngIf="veh.promotion">
+                        <img src="assets/image/promo.png" class="img-thumnail img-circle" height="30px" width="30px">
+                      </span>
+                      <span *ngIf="veh.selected">
+                        <img src="assets/image/favorite.png" class="img-thumnail img-circle" height="30px" width="30px">
+                      </span>
+                      <span *ngIf="veh.disponibilite">
+                        <img src="assets/image/disponibilite.jpg" class="img-thumnail img-circle" height="30px" width="30px">
+                      </span>
+                    </div>
+                    <div>
+                      <form #f="ngForm" (ngSubmit)="onAddVehiculeToHangar(veh)">
+                        <label class="control-label">Quantite :</label>
+                        <input type="number" name="quantity" ngModel style="width: 40px;" [(ngModel)]="veh.quantity">
+                        <button>
+                          <img src="assets/image/Garage.png" height="30px" width="30px">
+                        </button>
+                      </form>
+                    </div>
+              </div>
+        </div>
+    </div>
+    </div>
+  </div>
+  <img [src]="myimage" alt="Cinque Terre">
+</div>
+
+
+

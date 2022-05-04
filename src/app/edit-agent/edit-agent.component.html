@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">MIS A JOUR AGENTS</div>
+        <div class="panel-body" *ngIf="currentAgent">
+           <form #f="ngForm" (ngSubmit)="onUpdateAgent(f.value)">
+               <div class="form-group">
+                   <label class="control-label">Matricule</label>
+                   <input class="form-control" type="text" name="matriculeAgent" ngModel [(ngModel)]="currentAgent.matriculeAgent">
+               </div>
+               <div class="form-group">
+                   <label class="control-label">Nom</label>
+                   <input class="form-control" type="text" name="nomAgent" ngModel [(ngModel)]="currentAgent.nomAgent">
+               </div>
+               <div class="form-group">
+                   <label class="control-label">Prenom</label>
+                   <input class="form-control" type="text" name="prenomAgent" ngModel [(ngModel)]="currentAgent.prenomAgent">
+               </div>
+               <div class="form-group">
+                   <label class="control-label">Tel-Agent</label>
+                   <input class="form-control" type="text" name="telAgent" ngModel [(ngModel)]="currentAgent.telAgent">
+               </div>
+               <div class="form-group">
+                   <label class="control-label">Mail</label>
+                   <input class="form-control" type="text" name="mailAgent" ngModel [(ngModel)]="currentAgent.mailAgent">
+               </div>
+               <div class="form-group">
+                <label class="control-label">Login</label>
+                <input class="form-control" type="text" name="loginAgent" ngModel [(ngModel)]="currentAgent.loginAgent">
+            </div>
+            <div class="form-group">
+                <label class="control-label">MOTdePASS</label>
+                <input class="form-control" type="text" name="pwdAgent" ngModel [(ngModel)]="currentAgent.pwdAgent">
+            </div>
+               <button class="btn btn-success" type="submit">UPDATE</button><+><+><+><button class="btn btn-primary" routerLink="/agents">Annuler</button>
+           </form>
+        </div>
+    </div>
+</div>

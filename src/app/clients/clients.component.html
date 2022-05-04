@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="col-md-20 col-sm-10 col-xs-40">
+        <div class="panel panel-primary">
+            <div class="panel-heading"><h3> Liste des CLIENTS</h3></div>
+            <div class="panel-body">
+                <button class="btn btn-success" routerLink="/new-client">NewCLIENT</button>
+            </div>
+            <div class="panel-body">
+                <form #f="ngForm" (ngSubmit)="onChercher(f.value)">
+                    <div class="form-group">
+                      <label>Keyword:</label>
+                      <input type="text" name="keyword" ngModel>
+                      <button type="submit" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-search"></span>
+                        Chercher
+                      </button>
+                    </div>
+                  </form>
+                  <table *ngIf="listClients"  class="table table-striped">
+                    <tr>
+                      <th>IdCard</th><th>NOM</th><th>PRENOM</th><th>TEL</th><th>Adresse</th><th>EMAIL</th><th>PERMIS</th><th>AGE</th><th>O-P-T-I-O-N-S:</th>
+                    </tr>
+                    <tbody>
+                    <tr *ngFor="let cli of listClients._embedded.clients">
+                    <td class="bg-danger ">{{cli.cniClient}}</td>
+                    <td class="bg-primary">{{cli.nomClient}}</td>
+                    <td class="bg-success">{{cli.prenomClient}}</td>
+                    <td class="bg-warning">{{cli.telClient}}</td>
+                    <td class="bg-info">   {{cli.adresseClient}}</td>
+                    <td class="bg-success">{{cli.mailClient}}</td>
+                    <td class="bg-warning">{{cli.permitClient}}</td>
+                    <td class="bg-warning">{{cli.ageClient}}</td>
+                    <td><a class="btn btn-danger" (click)="onDeleteClient(cli)">DELETE</a></td>
+                    <td><a class="btn btn-success" (click)="onEditClient(cli)">EDITER</a></td>
+                  </tr>
+                </tbody>
+                  </table>
+                  <ul *ngIf="pages" class="nav nav-pills">
+                    <li class="clickable" [ngClass]="i==currentPage?'active':''" *ngFor="let p of pages; let i=index">
+                      <a (click)="onPageClient(i)">{{i}}</a>
+                    </li>
+                  </ul>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,57 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand">PARKING:VENTE & LOCATION</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a routerLink="">Home</a></li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+          <span class="glyphicon glyphicon-menu-hamburger"></span>MENU
+          <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a routerLink="/agences">Recherche Agence</a></li>
+          <li><a href="#">Locations</a></li>
+          <li><a href="#">Ventes</a></li>
+        </ul>
+      </li>
+      <li class="dropdown" *ngIf="authService.isAdmin()">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+          <span class="glyphicon"></span>Administration
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a routerLink="/agents">AjouterAgents</a></li>
+          <li><a routerLink="/clients">AjouterClients</a></li>
+          <li><a routerLink="/vehicule">AjouterVehicules</a></li>
+        </ul>
+      </li>
+      <li><a routerLink="/garages">Garage</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <a >{{garageService.getCurrentGarage().name}} | {{garageService.getCurrentGarage().items.size}}</a>
+      </li>
+      <li>
+        <a class="btn" (click)="onLogOut()">
+          <span class="glyphicon glyphicon-log-out"></span>
+        </a>
+      </li>
+      </ul>
+  </div>
+</nav>
+<router-outlet>
+
+</router-outlet>
+<!--<div class="container">
+<div class="col-md-3">
+  <ul class="list-group" *ngIf="typeVehicules">
+    <li class="list-group-item" *ngFor="let typeV of typeVehicules._embedded.typeVehicules">
+      {{typeV.libelleTypeVeh}}
+    </li>
+  </ul>
+</div>
+<div class="col-md-9">
+
+</div>
+</div>-->

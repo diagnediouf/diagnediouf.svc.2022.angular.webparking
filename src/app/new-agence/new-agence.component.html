@@ -1,0 +1,61 @@
+<div class="container">
+<div class="col-md-6 col-sm-1 col-xs-12">
+<div class="panel panel-primary">
+    <div class="panel-heading">Nouvelle Agence</div>
+    <div class="panel-body" *ngIf="mode==1">
+            <form #f="ngForm" (ngSubmit)="onSaveAgence(f.value)">
+                <div class="form-group">
+                    <label class="control-label">Pays</label>
+                    <input class="form-control" type="text" name="pays" ngModel>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Ville</label>
+                    <input class="form-control" type="text" name="ville" ngModel>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Nom-Agence</label>
+                    <input class="form-control" type="text" name="nomAgence" ngModel>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Tel-Agence</label>
+                    <input class="form-control" type="text" name="telAgence" ngModel>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Adresse-Agence</label>
+                    <input class="form-control" type="text" name="adresseAgence" ngModel>
+                </div>
+                <button class="btn btn-success" type="submit">SAVE</button>
+            </form>
+        </div>
+        <div class="panel-body" *ngIf="mode==2">
+            <button class="btn btn-success" (click)="onNewAgence()">Ajout</button>
+            <p></p>
+            <div class="form-group">
+                <label>ID:</label>
+                <label>{{currentAgence.idAgence}}</label>
+            </div>
+            <div class="form-group">
+                <label>PAYS:</label>
+                <label>{{currentAgence.pays}}</label>
+            </div>
+            <div class="form-group">
+                <label>VILLE:</label>
+                <label>{{currentAgence.ville}}</label>
+            </div>
+            <div class="form-group">
+                <label>NOM AGENCE:</label>
+                <label>{{currentAgence.nomAgence}}</label>
+            </div>
+            <div class="form-group">
+                <label>TELEPHONE:</label>
+                <label>{{currentAgence.telAgence}}</label>
+            </div>
+            <div class="form-group">
+                <label>ADRESSE:</label>
+                <label>{{currentAgence.adresseAgence}}</label>
+            </div>
+            <button class="btn btn-success" routerLink="/agences">Retour Liste Agence</button>
+        </div>
+    </div>
+</div>
+</div>

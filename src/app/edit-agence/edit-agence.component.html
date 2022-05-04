@@ -1,0 +1,30 @@
+ <div class="container">
+     <div class="panel panel-default">
+         <div class="panel-heading">MIS A JOUR AGENCE</div>
+         <div class="panel-body" *ngIf="currentAgence">
+            <form #f="ngForm" (ngSubmit)="onUpdateAgence(f.value)">
+                <div class="form-group">
+                    <label class="control-label">Pays</label>
+                    <input class="form-control" type="text" name="pays" ngModel [(ngModel)]="currentAgence.pays">
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Ville</label>
+                    <input class="form-control" type="text" name="ville" ngModel [(ngModel)]="currentAgence.ville">
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Nom-Agence</label>
+                    <input class="form-control" type="text" name="nomAgence" ngModel [(ngModel)]="currentAgence.nomAgence">
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Tel-Agence</label>
+                    <input class="form-control" type="text" name="telAgence" ngModel [(ngModel)]="currentAgence.telAgence">
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Adresse-Agence</label>
+                    <input class="form-control" type="text" name="adresseAgence" ngModel [(ngModel)]="currentAgence.adresseAgence">
+                </div>
+                <button class="btn btn-success" type="submit">UPDATE</button><+><+><+><button class="btn btn-primary" routerLink="/agences">Annuler</button>
+            </form>
+         </div>
+     </div>
+ </div>

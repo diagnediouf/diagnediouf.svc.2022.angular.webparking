@@ -1,0 +1,80 @@
+<div class="container">
+    <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="panel panel-primary">
+        <div class="panel-heading"><h3><p style="color:chartreuse;">Page D'AJOUTClient</p></h3></div>
+        <div class="panel-body" *ngIf="mode==1">
+                <form #f="ngForm" (ngSubmit)="onSaveClient(f.value)">
+                    <div class="form-group">
+                        <label class="control-label">CNI</label>
+                        <input class="form-control" type="text" name="cniClient" ngModel>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Nom</label>
+                        <input class="form-control" type="text" name="nomClient" ngModel>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Prenom</label>
+                        <input class="form-control" type="text" name="prenomClient" ngModel>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Telephone</label>
+                        <input class="form-control" type="text" name="telClient" ngModel>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">ADRESSE</label>
+                        <input class="form-control" type="text" name="adresseClient" ngModel>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">EMAIL</label>
+                        <input class="form-control" type="text" name="mailClient" ngModel>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">PERMIS</label>
+                        <input class="form-control" type="text" name="permitClient" ngModel>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">AGE</label>
+                        <input class="form-control" type="number" name="ageClient" ngModel>
+                    </div>
+                    <button class="btn btn-success" type="submit">SAVE</button>
+                </form>
+            </div>
+            <div class="panel-body" *ngIf="mode==2">
+                <button class="btn btn-success" (click)="onNewClient()">NewClient</button>
+                <p></p>
+                <div class="form-group">
+                    <label>CNI:</label>
+                    <label>{{currentClient.cniClient}}</label>
+                </div>
+                <div class="form-group">
+                    <label>NOM:</label>
+                    <label>{{currentClient.nomClient}}</label>
+                </div>
+                <div class="form-group">
+                    <label>PRENOM:</label>
+                    <label>{{currentClient.prenomClient}}</label>
+                </div>
+                <div class="form-group">
+                    <label>TELEPHONE:</label>
+                    <label>{{currentClient.telClient}}</label>
+                </div>
+                <div class="form-group">
+                    <label>ADRESSE:</label>
+                    <label>{{currentClient.adresseClient}}</label>
+                </div>
+                <div class="form-group">
+                    <label>EMAIL:</label>
+                    <label>{{currentClient.mailClient}}</label>
+                </div>
+                <div class="form-group">
+                    <label>PERMIS:</label>
+                    <label>{{currentClient.permitClient}}</label>
+                </div>
+                <div class="form-group">
+                    <label>AGE:</label>
+                    <label>{{currentClient.ageClient}}</label>
+                </div>
+                <button class="btn btn-success" routerLink="/clients">Retour Liste CLIENTS</button>
+            </div>
+        </div>
+    </div>

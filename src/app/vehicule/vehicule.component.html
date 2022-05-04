@@ -1,0 +1,102 @@
+<div class="jumbotron jumbotron-fluid">
+  <h3 class="display-4 text-center"><img src="assets/image/Garage.png" height="50px" width="50px"> Ajout de Vehicule</h3>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 offset-md-1">
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+    <div class="panel-body">
+  <form #f="ngForm" autocomplete="off" (ngSubmit)="onSaveVehicule(f.value)">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label">Matricule</label>
+          <input class="form-control" type="text" name="matricule"  ngModel>
+      </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label">Marque</label>
+          <input class="form-control" type="text" name="marque"  ngModel>
+      </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label">Carburant</label>
+          <input class="form-control" type="text" name="carburant"  ngModel>
+      </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label">Kilometrage</label>
+          <input class="form-control" type="text" name="kilometrage"  ngModel>
+      </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label">Couleur</label>
+          <input class="form-control" type="text" name="couleur"  ngModel>
+      </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label">Places</label>
+          <input class="form-control" type="number" name="nbrePlace"  ngModel>
+      </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label">PrixVente</label>
+          <input class="form-control" type="number" name="currentprice"  ngModel>
+      </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label">PrixParJour</label>
+          <input class="form-control" type="number" name="prixParJour"  ngModel>
+      </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label">Description</label>
+          <input class="form-control" type="text" name="description"  ngModel>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label">Nom de fichier vehicule</label>
+          <input class="form-control" type="text" name="photoVeh"  ngModel>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group" *ngIf="typeVehList">
+          <label >Type De Vehicule</label>
+          <select [(ngModel)]="typeVehList" name="typeVehList"  class="form-control">
+              <option>--Select--</option>
+              <option *ngFor="let typV of typeVehList._embedded.typeVehicules"
+                      [value]="typV.id">
+                {{typV.libelleTypeVeh}}
+              </option>
+          </select>
+        </div>
+      </div>
+        <div class="form-group">
+          <label class="control-label">Selection</label>
+          <input class="form-control" type="checkbox" name="selected" ngModel>
+        </div>
+      <div class="form-group">
+        <label class="control-label">Promotion</label>
+        <input class="form-control" type="checkbox" name="promotion" ngModel>
+      </div>
+      <div class="form-group">
+        <label class="control-label">Disponibilité</label>
+        <input class="form-control" type="checkbox" name="disponibilite" ngModel>
+      </div>
+      <button class="btn btn-success" type="submit" [disabled]="!f.form.valid"> SAVE</button>
+    </div>
+  </form>
+</div> 
+</div>

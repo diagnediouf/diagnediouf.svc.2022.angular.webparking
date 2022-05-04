@@ -1,0 +1,45 @@
+<div class="container">
+  <img [src]="myimage" alt="Cinque Terre" class="col-sm-4">
+  <div class="col-md-12 col-sm-4 col-xs-12">
+  <div class="panel panel-primary">
+    <div class="panel-heading">LISTE AGENCES</div>
+    <div class="panel-body">
+      <button class="btn btn-primary" routerLink="/new-agence">NewAgence</button>
+    </div>
+    <div class="panel-body">
+      <form #f="ngForm" (ngSubmit)="onChercher(f.value)">
+        <div class="form-group">
+          <label>Keyword:</label>
+          <input type="text" name="keyword" ngModel>
+          <button type="submit" class="btn btn-primary">
+            <span class="glyphicon glyphicon-search"></span>
+            Chercher
+          </button>
+        </div>
+      </form>
+      <table *ngIf="listAgences"  class="table table-striped">
+        <tr>
+          <th>ID</th><th>PAYS</th><th>VILLES</th><th>Nom</th><th>Tel:</th><th>Adresse</th>
+        </tr>
+        <tbody>
+        <tr *ngFor="let agce of listAgences._embedded.agences">
+        <td class="bg-danger ">{{agce.idAgence}}</td>
+        <td class="bg-primary">{{agce.pays}}</td>
+        <td class="bg-success">{{agce.ville}}</td>
+        <td class="bg-warning">{{agce.nomAgence}}</td>
+        <td class="bg-info">{{agce.telAgence}}</td>
+        <td class="bg-info">{{agce.adresseAgence}}</td>
+        <td><a class="btn btn-danger" (click)="onDeleteAgence(agce)">DELETE</a></td>
+        <td><a class="btn btn-success" (click)="onEditAgence(agce)">EDITER</a></td>
+      </tr>
+    </tbody>
+      </table>
+      <ul *ngIf="pages" class="nav nav-pills">
+        <li class="clickable" [ngClass]="i==currentPage?'active':''" *ngFor="let p of pages; let i=index">
+          <a (click)="onPageAgence(i)">{{i}}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>

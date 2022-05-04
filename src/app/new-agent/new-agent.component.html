@@ -1,0 +1,72 @@
+<div class="container">
+    <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="panel panel-primary">
+        <div class="panel-heading"><h3><p style="color:chartreuse;">Nouvelle Agent</p></h3></div>
+        <div class="panel-body" *ngIf="mode==1">
+                <form #f="ngForm" (ngSubmit)="onSaveAgent(f.value)">
+                    <div class="form-group">
+                        <label class="control-label">Matricule</label>
+                        <input class="form-control" type="text" name="matriculeAgent" ngModel>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Nom</label>
+                        <input class="form-control" type="text" name="nomAgent" ngModel>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Prenom</label>
+                        <input class="form-control" type="text" name="prenomAgent" ngModel>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Tel-Agent</label>
+                        <input class="form-control" type="text" name="telAgent" ngModel>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Mail</label>
+                        <input class="form-control" type="text" name="mailAgent" ngModel>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Login</label>
+                        <input class="form-control" type="text" name="loginAgent" ngModel>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">MotDePass</label>
+                        <input class="form-control" type="text" name="pwdAgent" ngModel>
+                    </div>
+                    <button class="btn btn-success" type="submit">SAVE</button>
+                </form>
+            </div>
+            <div class="panel-body" *ngIf="mode==2">
+                <button class="btn btn-success" (click)="onNewAgent()">Ajout</button>
+                <p></p>
+                <div class="form-group">
+                    <label>MATRI:</label>
+                    <label>{{currentAgent.matriculeAgent}}</label>
+                </div>
+                <div class="form-group">
+                    <label>NOM:</label>
+                    <label>{{currentAgent.nomAgent}}</label>
+                </div>
+                <div class="form-group">
+                    <label>PRENOM:</label>
+                    <label>{{currentAgent.prenomAgent}}</label>
+                </div>
+                <div class="form-group">
+                    <label>TELEPHONE:</label>
+                    <label>{{currentAgent.telAgent}}</label>
+                </div>
+                <div class="form-group">
+                    <label>MAIL:</label>
+                    <label>{{currentAgent.mailAgent}}</label>
+                </div>
+                <div class="form-group">
+                    <label>LOGIN:</label>
+                    <label>{{currentAgent.loginAgent}}</label>
+                </div>
+                <div class="form-group">
+                    <label>MotDePass:</label>
+                    <label>{{currentAgent.pwdAgent}}</label>
+                </div>
+                <button class="btn btn-success" routerLink="/agents">Retour Liste Agent</button>
+            </div>
+        </div>
+    </div>

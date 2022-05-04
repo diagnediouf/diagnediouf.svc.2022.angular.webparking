@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">MIS A JOUR des CLIENTS</div>
+        <div class="panel-body" *ngIf="currentClient">
+           <form #f="ngForm" (ngSubmit)="onUpdateClient(f.value)">
+               <div class="form-group">
+                   <label class="control-label">CNI</label>
+                   <input class="form-control" type="text" name="cniClient" ngModel [(ngModel)]="currentClient.cniClient">
+               </div>
+               <div class="form-group">
+                   <label class="control-label">Nom</label>
+                   <input class="form-control" type="text" name="nomClient" ngModel [(ngModel)]="currentClient.nomClient">
+               </div>
+               <div class="form-group">
+                   <label class="control-label">Prenom</label>
+                   <input class="form-control" type="text" name="prenomClient" ngModel [(ngModel)]="currentClient.prenomClient">
+               </div>
+               <div class="form-group">
+                   <label class="control-label">TELEPHONE</label>
+                   <input class="form-control" type="text" name="telClient" ngModel [(ngModel)]="currentClient.telClient">
+               </div>
+               <div class="form-group">
+                   <label class="control-label">ADRESSE</label>
+                   <input class="form-control" type="text" name="adresseClient" ngModel [(ngModel)]="currentClient.adresseClient">
+               </div>
+               <div class="form-group">
+                <label class="control-label">EMAIL</label>
+                <input class="form-control" type="text" name="mailClient" ngModel [(ngModel)]="currentClient.mailClient">
+            </div>
+            <div class="form-group">
+                <label class="control-label">PERMIT</label>
+                <input class="form-control" type="text" name="permitClient" ngModel [(ngModel)]="currentClient.permitClient">
+            </div>
+            <div class="form-group">
+                <label class="control-label">AGE</label>
+                <input class="form-control" type="number" name="ageClient" ngModel [(ngModel)]="currentClient.ageClient">
+            </div>
+               <button class="btn btn-success" type="submit">UPDATE</button><+><+><+><button class="btn btn-primary" routerLink="/clients">Annuler</button>
+           </form>
+        </div>
+    </div>
+</div>

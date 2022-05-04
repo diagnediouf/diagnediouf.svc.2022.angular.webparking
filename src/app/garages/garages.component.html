@@ -1,0 +1,23 @@
+<div class="panel panel-heading">
+    <div class="panel-heading">Garages</div>
+    <div class="panel-body">
+        <table class="table table-striped">
+            <tbody>
+            <tr>
+                <th>matricule</th><th>marque</th><th>Quantité</th><th>prixVente</th><th>prixLocation</th>
+            </tr>
+            <tr *ngFor="let vehItem of garageService.getCurrentGarage().items.values()">
+                <td class="bg-danger">{{vehItem.matricule}}</td>
+                <td class="bg-info">{{vehItem.vehicule.marque}}</td>
+                <td class="bg-primary">{{vehItem.quantity}}</td>
+                <td class="bg-success">{{vehItem.currentprice}}</td>
+                <td class="bg-warning">{{vehItem.prixParJour}}</td>
+            </tr>
+            <tr>
+                <td colspan="3">TOTAL</td>
+                <td>{{garageService.getTotal()}}</td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+</div>
